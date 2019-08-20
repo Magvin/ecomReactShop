@@ -2,14 +2,14 @@ import React from 'react';
 // CSS
 import './custom-button.styles.scss'
 
-const CustomButton = ({handleSubmit,backgroundColor,type,color,text}) => (
+const CustomButton = ({backgroundColor,type,color,text,...otherProps}) => (
 <button className="custom-button" 
     type={type} 
     style={{
         backgroundColor,
         color
     }}
-    onSubmit={handleSubmit}
+    {...otherProps}
     >{text}</button>
 )
 
