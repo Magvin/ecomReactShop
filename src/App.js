@@ -8,7 +8,7 @@ import ShopPage  from './components/pages/shop/shop.components';
 import SignInAndSignUp from './components/pages/sigin-and-signup/sigin-and-signup.component';
 import Header from './components/header/header.component';
 // Utils
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 
 
@@ -23,10 +23,8 @@ class App extends React.Component {
   unsubsciveFromAuth = null;
 
   componentDidMount() {
-    this.unsubsciveFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user})
-
-      console.log(user)
+    this.unsubsciveFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user);
     })
   }
   

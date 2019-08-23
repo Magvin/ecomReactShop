@@ -17,6 +17,51 @@ const config = {
   appId: "1:599856476874:web:fa59251bd8685132"
   };
 
+  // Setting User fro aouth object to store in our database
+
+  /**
+   * 
+   * @param {object} userAuth  User Object from Firebase
+   * @param {object} additionalData  Any additionalData
+   * 
+   */
+
+  export const createUserProfileDocument = async(userAuth, additionalData) => {
+      //  If user does not exist return nothing
+      if(!userAuth) {
+        return;
+      }
+      // Storing userRef
+   
+      const userRef = firestore.doc(`users/${userAuth.uid}`)  // uid is dynamicly created with google uniq id for this particular website 
+      // Getting user detail snapShot
+      const snapShot = await userRef.get();
+
+      if(!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date() // User creation date
+
+        try {
+          await userRef.set({
+            displayName,
+            email,
+            createdAt,
+            ...additionalData
+          })
+        } catch(error) {
+          console.log('error creating user', error.message)
+        }
+      }
+      
+      return userRef;
+
+      
+      
+
+      
+
+  }
+
   // Init Firebase 
 
   firebase.initializeApp(config);
