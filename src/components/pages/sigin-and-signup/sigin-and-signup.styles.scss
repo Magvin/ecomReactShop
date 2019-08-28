@@ -1,0 +1,12 @@
+.sign-in-and-sign-up {
+    width: 850px;
+    display: flex;
+    justify-content: space-between;
+    margin:30px auto;
+}
+
+@media only screen  and (max-width:800px) {
+    .sign-in-and-sign-up  {
+        display: inline-block;        
+    }
+}
