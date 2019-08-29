@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 // Components 
 import FormInput from '../reusable-components/form-input/form-input.component';
@@ -19,9 +19,9 @@ class SignUpComponent extends Component {
             displayName: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            errorMessage: ''
             
-
         }
     }
 
@@ -45,12 +45,19 @@ class SignUpComponent extends Component {
             displayName: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            errorMessage: ''
            })
+
+           return <Redirect to = '/sigin'/>
            
            
         } catch(error) {
-            console.error(error)
+            this.setState({
+                errorMessage: error.message
+            })
+            console.error(error.message)
+
         }
 
     }
@@ -60,9 +67,10 @@ class SignUpComponent extends Component {
         this.setState({[name]:value})
     }
     render() {
-        const { displayName, email, password, confirmPassword } = this.state;
+        const { displayName, email, password, confirmPassword, errorMessage } = this.state;
         return (
             <div className="sign-up">
+                <div class="alert" style={{color:'red'}}>{errorMessage}</div>
                 <h2 className="title">I do not have a account</h2>
                 <span>Sign up with your email and password</span>
                 <form className="sign-up-form" onSubmit={ this.handleSubmit}>
