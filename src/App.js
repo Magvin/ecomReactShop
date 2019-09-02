@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
+
 //Components
 import { HomePage } from './components/pages/homepage/homepage.components';
 import ShopPage  from './components/pages/shop/shop.components';
