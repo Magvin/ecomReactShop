@@ -8,8 +8,9 @@ import './header.styles.scss'
 import { auth } from '../../firebase/firebase.utils';
 // Components
 import CartIcon from '../cart-icon/cart-icon.components';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({currentUser}) => (
+const Header = ({currentUser,cart}) => (
     <header class="header">
         
         <Link className="logo-container" to="/">
@@ -37,15 +38,19 @@ const Header = ({currentUser}) => (
             }
             <CartIcon/>
             
+            
 
 
         </div>
+        {cart ? null : <CartDropdown/>}
+        
         
     </header>
 )
 
 const mapStateToProps = (state) => ({
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    cart: state.cart.hidden
 })
 
 export default connect(mapStateToProps)(Header);
