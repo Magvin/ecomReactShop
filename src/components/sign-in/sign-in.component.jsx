@@ -50,7 +50,7 @@ class SigIn extends React.Component {
                          />
                     <div className="btn-group">
                     <CustomButton type={'submit'} text={'Submit'} ></CustomButton>
-                    <CustomButton onClick={signInWithGoogle} text={'Sign in with Google'}  backgroundColor={'#3b1cbd'}></CustomButton>
+                    <CustomButton onClick={signInWithGoogle} text={'Sign in with Google'}  google={true}></CustomButton>
                     </div>
                 </form>
                 

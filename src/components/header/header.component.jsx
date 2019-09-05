@@ -42,7 +42,7 @@ const Header = ({currentUser,cart}) => (
 
 
         </div>
-        {cart ? null : <CartDropdown/>}
+        {cart ? null : <CartDropdown/> }
         
         
     </header>
