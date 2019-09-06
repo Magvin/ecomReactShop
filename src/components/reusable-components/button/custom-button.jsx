@@ -3,7 +3,7 @@ import React from 'react';
 import './custom-button.styles.scss'
 
 const CustomButton = ({backgroundColor,type,inverted,color,text,google,...otherProps}) => (
-<button className={`${inverted ? 'inverted': ''} custom-button` + `${google ? ' google-sign-in' : ''}`} 
+<button className={`${inverted ? 'inverted': ''} custom-button` || `${google ? ' google-sign-in' : ''}`} 
     type={type} 
     style={{
         backgroundColor,
