@@ -11,7 +11,7 @@ import CartIcon from '../cart-icon/cart-icon.components';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = ({currentUser,cart}) => (
-    <header class="header">
+    <header className="header">
         
         <Link className="logo-container" to="/">
         <Logo className="logo"/>
