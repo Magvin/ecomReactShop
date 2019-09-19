@@ -9,6 +9,7 @@ import { HomePage } from './components/pages/homepage/homepage.components';
 import ShopPage  from './components/pages/shop/shop.components';
 import SignInAndSignUp from './components/pages/sigin-and-signup/sigin-and-signup.component';
 import Header from './components/header/header.component';
+import CheckoutPage from './components/pages/checkout/checkout.component';
 // Utils
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 //Actions Redux
@@ -53,7 +54,7 @@ class App extends React.Component {
       <Switch>
       <Route exact path='/' component={ HomePage } />
       <Route exact path='/shop' component={ ShopPage } />
-     
+      <Route exact path='/checkout' component= {CheckoutPage} />
       <Route exact path='/signin' render={()=> this.props.currentUser ? (<Redirect to ="/"/>) : (<SignInAndSignUp/>)} /> 
       </Switch>
     </div>
@@ -61,8 +62,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps =({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps =(state) => ({
+  currentUser: setCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
