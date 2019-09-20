@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { toggleCartHidden } from '../../redux/cart/cart.action';
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
+
 import { ReactComponent as ShoppingIcon } from '../../assets/img/shopping-bag.svg';
+
+
 
 import './cart-icon.styles.scss';
 
