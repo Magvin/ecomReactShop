@@ -6,7 +6,7 @@ import PreviewCollection from '../preview-collections/preview-collection.compone
 // Redux and Reselect
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectShopSections } from '../../redux/shop/shop.selectors';
+import { selectCollectionForPrievew } from '../../redux/shop/shop.selectors';
 
 
 const CollectionsOverview = ({shop}) => (
@@ -20,7 +20,7 @@ const CollectionsOverview = ({shop}) => (
 )
 
 const mapStateToProps = createStructuredSelector({
-    shop:selectShopSections
+    shop:selectCollectionForPrievew
 })
 
 export default connect(mapStateToProps)(CollectionsOverview);
