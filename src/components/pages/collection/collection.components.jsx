@@ -20,7 +20,7 @@ const CollectionPage = ({collection}) => {
   );
 };
 
-const mapStateProps = (state, ownProps) => (console.log(state),{
+const mapStateProps = (state, ownProps) => ({
   collection: selectCollection(ownProps.match.params.collectionId)(state)
 });
 
