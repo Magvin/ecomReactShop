@@ -1,9 +1,16 @@
 ## Ecom cloth shop
 
-## Tech
+# Tech 
+..* React
+..* JSX
+..* Styles in JS
+..* Redux
+..* Reselect
+..* Redux Persist for caching
+..* Firebase for auth
+..* Stripes(for payment) 
 
-React,CSS, HTML and Firebase
 
 ## Future enhancments
 
-Grapql, Stripes(for payment) and Styled Components
+GraphQL and Styled Components
