@@ -10,7 +10,8 @@ export const selectCollectionsForPreview = createSelector(
  
 );
 
-export const selectCollection = collectionUrlParam =>
-  createSelector([selectShopSections], collections =>
-    collections ? collections[collectionUrlParam] : null
-  );
+export const selectCollection = collectionUrlParam =>createSelector([selectCollectionsForPreview], collections => (
+    collections ?  collections.filter(collection=> collection.routeName === collectionUrlParam) : null
+     
+    )
+)
