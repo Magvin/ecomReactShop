@@ -1,4 +1,4 @@
-import SHOP_DATA from '../../components/pages/shop/shop.data'
+
 import ShopActionTypes from './shop.types'
 
 const INITIAL_STATE = {
