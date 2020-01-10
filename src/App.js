@@ -20,14 +20,13 @@ class App extends React.Component {
 	unsubsciveFromAuth = null;
 
 	componentDidMount() {
+		console.log(this.props)
 	this.props.userCheckSession();
 	}
 
-	componentWillUnmount() {
-		this.unsubsciveFromAuth();
-	}
 
 	render() {
+		{console.log(this.props)}
 		return (
 			<div>
 				<Header />
