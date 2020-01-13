@@ -40,3 +40,18 @@ export const signOutFailure = (error) => ({
 export const signOutSuccess = () =>({
   type: UserActionTypes.SIGN_OUT_SUCCESS,
 })
+
+export const signUpOnStart = (credentials) => ({
+  type: UserActionTypes.REGISTER_START,
+  payload: credentials
+})
+
+export const signUpOnSuccess = ({user, additionalData}) => ({
+  type: UserActionTypes.REGISTER_SUCCESS,
+  payload: {user, additionalData}
+})
+
+export const signUpOnError = (error) => ({
+  type: UserActionTypes.REGISTER_ERROR,
+  payload:error.message
+})

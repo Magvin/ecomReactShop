@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 
 // Components 
 import FormInput from '../reusable-components/form-input/form-input.component';
 import CustomButton from '../reusable-components/button/custom-button';
-
-// Utils
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
-
+// Redux
+import { connect } from 'react-redux';
+import { signUpOnStart } from '../../redux/user/user.action';
 // CSS
 import './sign-up.styles.scss';
 class SignUpComponent extends Component {
@@ -27,39 +25,30 @@ class SignUpComponent extends Component {
 
     // Functionality
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+      
+        if(nextProps.error !== null) {
+            console.log(nextProps.error)
+            return {
+                errorMessage: nextProps.error
+            }
+        } else {
+            return {
+                errorMessage: ''
+            }
+        }
+        
+      }
      handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         const { displayName, email, password, confirmPassword } = this.state;
-
+        const { signUpOnStart } = this.props;
         if(password !== confirmPassword) {
             alert("Password don't match ")
             return;
         }
-
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(email,password)
-
-           await createUserProfileDocument(user, { displayName } )
-
-           this.setState({
-            displayName: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            errorMessage: ''
-           })
-
-           return <Redirect to = '/sigin'/>
-           
-           
-        } catch(error) {
-            this.setState({
-                errorMessage: error.message
-            })
-            console.error(error.message)
-
-        }
-
+        signUpOnStart(email,password,displayName)
+        
     }
 
     handleChange = e => {
@@ -114,4 +103,12 @@ class SignUpComponent extends Component {
     }
 }
 
-export default SignUpComponent;
+const mapDispatchToProps = (dispatch) => ({
+    signUpOnStart: (email,password,displayName) => dispatch(signUpOnStart({email,password,displayName}))
+})
+
+const mapStateToProps = state => ({
+    error: state.user.errorMessage
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignUpComponent);
