@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { signUpOnStart } from '../../redux/user/user.action';
 // CSS
 import './sign-up.styles.scss';
+
 class SignUpComponent extends Component {
     constructor() {
         super();
